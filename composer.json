@@ -1,0 +1,11 @@
+{
+    "require": {
+        "symfony/console": "~2.0",
+        "symfony/process": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "WpSyncer\\": "src"
+        }
+    }
+}

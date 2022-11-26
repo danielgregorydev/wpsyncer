@@ -1,0 +1,14 @@
+#! /usr/bin/env php
+
+<?php
+
+use Symfony\Component\Console\Application;
+use WpSyncer\App\BackupDatabaseCommand;
+
+require 'vendor/autoload.php';
+
+$app = new Application();
+
+$app->add(new BackupDatabaseCommand());
+
+$app->run();
