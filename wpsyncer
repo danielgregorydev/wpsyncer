@@ -2,13 +2,15 @@
 
 <?php
 
+use WpSyncer\App\Env;
 use Symfony\Component\Console\Application;
-use WpSyncer\App\BackupDatabaseCommand;
+use WpSyncer\Command\BackupDatabaseCommand;
 
 require 'vendor/autoload.php';
 
-$app = new Application();
+Env::load();
 
+$app = new Application();
 $app->add(new BackupDatabaseCommand());
 
 $app->run();
