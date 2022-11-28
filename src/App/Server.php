@@ -3,6 +3,7 @@
 namespace WpSyncer\App;
 
 use Spatie\Ssh\Ssh;
+use WpSyncer\App\Env;
 
 class Server
 {
@@ -24,7 +25,7 @@ class Server
 		return Ssh::create($this->user, $this->hostname, $this->port)->disablePasswordAuthentication();
 	}
 
-	public function testConnection()
+	public function connected()
 	{
 		$process = $this->ssh->execute('pwd');
 
@@ -39,5 +40,10 @@ class Server
 	public function download($remotePath, $localPath)
 	{
 		return $this->ssh->download($remotePath, $localPath);
+	}
+
+	public function getWpInstallPath()
+	{
+		return Env::get('REMOTE_WP_PATH');
 	}
 }
