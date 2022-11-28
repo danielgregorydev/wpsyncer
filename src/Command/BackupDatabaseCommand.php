@@ -2,7 +2,6 @@
 
 namespace WpSyncer\Command;
 
-use Exception;
 use WpSyncer\App\App;
 use WpSyncer\App\DatabaseBackup;
 use Symfony\Component\Console\Command\Command;
