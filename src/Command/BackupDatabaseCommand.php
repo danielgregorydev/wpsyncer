@@ -21,7 +21,7 @@ class BackupDatabaseCommand extends Command
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
 		$output->writeln("<info>Backing up database</info>");
-		$output->writeln("<info>Running from:</info> " . getcwd());
+		$output->writeln("<info>Running from:</info> " . getcwd() . "\n");
 
 		$server = App::getServer();
 
