@@ -27,36 +27,20 @@ class DatabaseBackup
 
 	public function create()
 	{
-		$cdwp = 'cd ' . $this->server->getWpInstallPath();
-		$name = $this->name;
-
-		$steps = [
-			[
-				'commands' => ['wp'],
-				'error' => 'wp-cli does not appear to be installed on the remote server.',
-				'success' => 'Checked wp-cli is installed.'
-			],
-			[
-				'commands' => [$cdwp, 'wp core is-installed'],
-				'error' => 'WordPress does not appear to be installed. Check the provided remote directory is correct in your .env.',
-				'success' => 'Confirmed current WordPress installation can be accessed'
-			],
-			[
-				'commands' => [
-					$cdwp,
-					'wp db export ' . $name,
-					'mv ' . $name . ' ../' . $name
-				],
-				'error' => 'Could not create database backup.',
-				'success' => '<info>Remote database backed up</info>'
-			],
-		];
-
-		foreach ($steps as $step) {
-			$success = $this->server->execute($step['commands'])->isSuccessful();
-
-			$this->report($step[$success ? 'success' : 'error'], !$success);
+		if (!$this->server->hasWpCli()) {
+			$this->report("A database backup cannot be created when the server does not have wp-cli installed", 1);
+			return;
 		}
+
+		$command = sprintf('wp db export %s --path=%s', $this->name, $this->server->getWpInstallPath());
+		$success = $this->server->execute($command)->isSuccessful();
+
+		$this->report(
+			$success
+				? '<info>Remote database backed up</info>'
+				: 'Could not create database backup.',
+			!$success
+		);
 
 		return $this;
 	}

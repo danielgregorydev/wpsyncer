@@ -2,6 +2,7 @@
 
 namespace WpSyncer\App;
 
+use Exception;
 use Spatie\Ssh\Ssh;
 use WpSyncer\App\Env;
 
@@ -44,7 +45,13 @@ class Server
 
 	public function getWpInstallPath()
 	{
-		return Env::get('REMOTE_WP_PATH');
+		$path = Env::get('REMOTE_WP_PATH');
+
+		if (!$this->execute('wp core is-installed --path="' .  $path . '"')->isSuccessful()) {
+			throw new Exception("WordPress does not appear to be installed. Check the provided remote directory is correct in your .env. Path provided was: " . $path);
+		}
+
+		return $path;
 	}
 
 	public function hasWpCli()
