@@ -46,4 +46,9 @@ class Server
 	{
 		return Env::get('REMOTE_WP_PATH');
 	}
+
+	public function hasWpCli()
+	{
+		return $this->execute('wp')->isSuccessful();
+	}
 }
