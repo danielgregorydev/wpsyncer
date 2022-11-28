@@ -13,7 +13,6 @@ class BackupDatabaseCommand extends Command
 {
 	public function configure()
 	{
-
 		$this->setName('backup:db')
 			->setDescription('Backup a remote database.')
 			->addArgument('name', InputArgument::OPTIONAL, 'Database name', 'db.sql');
