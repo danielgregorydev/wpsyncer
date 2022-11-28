@@ -18,16 +18,17 @@ class Server
 		$this->port = $port;
 		$this->ssh = $this->connect();
 	}
+
+	public function connect()
+	{
+		return Ssh::create($this->user, $this->hostname, $this->port)->disablePasswordAuthentication();
+	}
+
 	public function testConnection()
 	{
 		$process = $this->ssh->execute('pwd');
 
 		return $process->isSuccessful();
-	}
-
-	public function connect()
-	{
-		return Ssh::create($this->user, $this->hostname, $this->port)->disablePasswordAuthentication();
 	}
 
 	public function execute($commands)
