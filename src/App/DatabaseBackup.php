@@ -51,7 +51,7 @@ class DatabaseBackup
 
 		$this->report('<info>Beginning database download</info>');
 
-		$downloaded = $this->server->download($name, $name)->isSuccessful();
+		$downloaded = $this->server->download($name)->isSuccessful();
 
 		$this->report(
 			$downloaded

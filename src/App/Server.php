@@ -38,9 +38,9 @@ class Server
 		return $this->ssh->execute($commands);
 	}
 
-	public function download($remotePath, $localPath)
+	public function download($remotePath, $localPath = null)
 	{
-		return $this->ssh->download($remotePath, $localPath);
+		return $this->ssh->download($remotePath, $localPath ?? $remotePath);
 	}
 
 	public function getWpInstallPath()
