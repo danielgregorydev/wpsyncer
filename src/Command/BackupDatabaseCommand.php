@@ -27,8 +27,6 @@ class BackupDatabaseCommand extends Command
 
 		$server = App::getServer();
 
-		$output->writeln('<info>Remote connection successful</info>');
-
 		$backup = new DatabaseBackup($server, $output);
 
 		$backup
