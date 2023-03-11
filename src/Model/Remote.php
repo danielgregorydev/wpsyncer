@@ -68,6 +68,6 @@ class Remote extends Server
 
 	public function uploadPath()
 	{
-		return $this->wp('option get upload_path');
+		return $this->getWpInstallPath() . '/' . $this->wp('option get upload_path');
 	}
 }
