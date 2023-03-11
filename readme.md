@@ -2,8 +2,8 @@
 
 ## Install
 
-composer global require danielgregorydev/wpsyncer:dev-main
+`composer global require danielgregorydev/wpsyncer:dev-main`
 
 ## Uninstall
 
-composer global remove danielgregorydev/wpsyncer
+`composer global remove danielgregorydev/wpsyncer`
