@@ -15,15 +15,15 @@ class Env
 		$dotenv->load(getcwd() . '/.env');
 	}
 
-	public static function get($key)
+	public static function get($key, $default = null)
 	{
 		$key = self::formatKey($key);
 
-		if (!isset($_ENV[$key])) {
+		if ($default === null && !isset($_ENV[$key])) {
 			throw new Exception('Attempting to retrieve "' . $key . '" environment variable but it is not defined. Does the current directory have a .env?');
 		}
 
-		return $_ENV[$key];
+		return $_ENV[$key] ?? $default;
 	}
 
 	public static function formatKey($key)
