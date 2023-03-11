@@ -40,6 +40,7 @@ class Remote extends Server
 
 	public function download($remotePath, $localPath = null)
 	{
+		var_dump($this->ssh->download($remotePath, $localPath ?? $remotePath));
 		return $this->ssh->download($remotePath, $localPath ?? $remotePath);
 	}
 
