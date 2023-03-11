@@ -9,14 +9,14 @@ class UploadsBackup extends Backup
 		$this->report('Downloading uploads');
 
 		$success =
-			$this->remote->download($this->remote->uploadPath(), $this->local->uploadPath() . '..')
-			->isSuccessful();
+			$this->remote->download($this->remote->uploadPath(), $this->local->uploadPath() . '..');
 
+		$this->report($success->getOutput());
 		$this->report(
-			$success
+			$success->isSuccessful()
 				? '<info>Uploads downloaded</info>'
 				: 'Failed to download uploads.',
-			!$success
+			!$success->isSuccessful()
 		);
 
 		return $this;
