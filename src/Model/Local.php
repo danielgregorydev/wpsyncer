@@ -28,6 +28,8 @@ class Local extends Server
 		}
 
 		var_dump($responses);
+		var_dump(count($responses));
+		var_dump(join('', $responses));
 
 		return count($responses) === 1 ? join('', $responses) : $responses;
 	}
