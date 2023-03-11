@@ -3,7 +3,7 @@
 namespace WpSyncer\Command;
 
 use WpSyncer\App\App;
-use WpSyncer\App\DatabaseBackup;
+use WpSyncer\App\Backup\DatabaseBackup;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,9 +23,10 @@ class BackupDatabaseCommand extends Command
 		$output->writeln("<info>Backing up database</info>");
 		$output->writeln("<info>Running from:</info> " . getcwd() . "\n");
 
-		$server = App::getServer();
+		$remote = App::getRemote();
+		$local = App::getLocal();
 
-		$backup = new DatabaseBackup($server, $output);
+		$backup = new DatabaseBackup($remote, $local, $output);
 
 		$backup
 			->setName($input->getArgument('name'))
