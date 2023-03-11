@@ -7,6 +7,7 @@ class UploadsBackup extends Backup
 	public function download()
 	{
 		$this->report('Downloading uploads');
+		$this->report('test');
 
 		$success =
 			$this->remote->download($this->remote->uploadPath(), $this->local->uploadPath() . '..');
