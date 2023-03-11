@@ -1,9 +1,14 @@
 {
+    "name": "danielgregorydev/wpsyncer",
+    "version": "0.1.0",
     "require": {
         "symfony/console": "~5.3",
         "symfony/dotenv": "^5.4",
         "spatie/ssh": "^1.8"
     },
+    "bin": [
+        "wpsyncer"
+    ],
     "autoload": {
         "psr-4": {
             "WpSyncer\\": "src"
