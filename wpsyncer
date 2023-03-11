@@ -10,6 +10,7 @@ if (isset($_composer_autoload_path)) {
 	require $_composer_autoload_path;
 } else {
 	$root = dirname(__DIR__);
+	die($root);
 
 	if (!is_file(sprintf('%s/vendor/autoload.php', $root))) {
 		$root = dirname(__DIR__, 4) . '/.composer';
