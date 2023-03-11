@@ -23,13 +23,8 @@ class Local extends Server
 		$responses = [];
 
 		foreach ($commands as $c) {
-			var_dump($prefix . ' ' . $c);
 			$responses[$c] = shell_exec($prefix . ' ' . $c);
 		}
-
-		var_dump($responses);
-		var_dump(count($responses));
-		var_dump(join('', $responses));
 
 		return count($responses) === 1 ? join('', $responses) : $responses;
 	}
