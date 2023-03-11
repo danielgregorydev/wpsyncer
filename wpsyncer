@@ -4,6 +4,7 @@
 
 use WpSyncer\App\Env;
 use Symfony\Component\Console\Application;
+use WpSyncer\Command\BackupUploadsCommand;
 use WpSyncer\Command\BackupDatabaseCommand;
 
 if (isset($_composer_autoload_path)) {
@@ -22,5 +23,6 @@ Env::load();
 
 $app = new Application();
 $app->add(new BackupDatabaseCommand());
+$app->add(new BackupUploadsCommand());
 
 $app->run();
