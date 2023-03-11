@@ -9,7 +9,6 @@ use WpSyncer\Command\BackupDatabaseCommand;
 if (isset($_composer_autoload_path)) {
 	require $_composer_autoload_path;
 } else {
-	// /Users/admin/.composer/vendor/autoload.php
 	$root = dirname(__DIR__);
 
 	if (!is_file(sprintf('%s/vendor/autoload.php', $root))) {
