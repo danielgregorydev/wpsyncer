@@ -1,6 +1,6 @@
 <?php
 
-namespace WpSyncer\App;
+namespace WpSyncer\Model;
 
 use Exception;
 use Spatie\Ssh\Ssh;

@@ -3,6 +3,7 @@
 namespace WpSyncer\App;
 
 use Exception;
+use WpSyncer\Model\Server;
 
 class App
 {

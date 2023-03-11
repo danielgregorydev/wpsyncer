@@ -3,7 +3,7 @@
 namespace WpSyncer\App;
 
 use Exception;
-use WpSyncer\App\Server;
+use WpSyncer\Model\Server;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class DatabaseBackup
