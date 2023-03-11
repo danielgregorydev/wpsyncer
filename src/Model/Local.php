@@ -27,6 +27,8 @@ class Local extends Server
 			$responses[$c] = shell_exec($prefix . ' ' . $c);
 		}
 
+		var_dump($responses);
+
 		return count($responses) === 1 ? join('', $responses) : $responses;
 	}
 
