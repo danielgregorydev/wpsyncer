@@ -6,13 +6,17 @@ use WpSyncer\App\Env;
 use Symfony\Component\Console\Application;
 use WpSyncer\Command\BackupDatabaseCommand;
 
-$root = dirname(__DIR__);
+if (isset($_composer_autoload_path)) {
+	require $_composer_autoload_path;
+} else {
+	$root = dirname(__DIR__);
 
-if (!is_file(sprintf('%s/vendor/autoload.php', $root))) {
-	$root = $_composer_autoload_path ?? dirname(__DIR__, 4) . '/.composer/';
+	if (!is_file(sprintf('%s/vendor/autoload.php', $root))) {
+		$root = dirname(__DIR__, 4) . '/.composer/';
+	}
+
+	require sprintf('%s/vendor/autoload.php', $root);
 }
-
-require sprintf('%s/vendor/autoload.php', $root);
 
 Env::load();
 
