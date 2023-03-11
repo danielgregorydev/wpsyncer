@@ -10,6 +10,7 @@ class UploadsBackup extends Backup
 
 		$this->report($this->remote->uploadPath());
 		$this->report($this->local->uploadPath() . '..');
+		var_dump($this->remote->uploadPath() . ', ' . $this->local->uploadPath() . '/..');
 
 		$success =
 			$this->remote->download($this->remote->uploadPath(), $this->local->uploadPath() . '/..');
